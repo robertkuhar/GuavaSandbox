@@ -1,0 +1,116 @@
+2012-01-04
+Google Collections 1/2:  http://www.youtube.com/watch?v=ZeO_J2OcHYM
+
+Bloch is still all proud of the Java Collections library.
+
+Bloch:  "The basic idea was that it was extensible...it has happened,
+but it really blossomed with Kevin's framework"
+
+1.  Minimize mutability
+2.  When in doubt, leave it out
+3.  Know and use the libraries
+
+Kevin B:
+
+java.util is the bedrock for Google Collections
+
+Immutable Collections
+ Multisets
+ Multimaps
+
+Unmodifiable vs Immutable
+ Unmodifiable - YOU can't change it through this reference, but it
+can be changed.
+ Immutable - no one can change this
+
+Immutable Collections
+ ImmutableList
+ ImmutableSet
+ ImmutableSortedSet
+ ImmutableMap
+ (ImmutableSortedSet) - doesn't exist at time of presentation
+
+He asserts his collections use far less memory
+
+13:15  ImmutableSet<Integer> i = ImmutableSet.of( 4, 8, 15, 16, 23, 42 );
+
+I liked the explanation about "why is it ImmutableSet<Integer> rather
+than just Set<Integer>"...its because ImmutableSet conveys behavior
+
+.of() and .with()...cool
+
+None of them have public constructors, they don't want you to subclass
+them, so the classes themselves aren't final, but no public
+constructors keeps you from subclassing /* how? */
+
+.of(), .with(), .copyOf()
+
+On the Map, .of() is not var args, there are overloaded methods for
+args up to 5.  Beyond 5, go with the builder.
+
+Caveats
+ - These collections do not like nulls
+ - The collections are immutable, the stuff you put in them may not be.
+
+MultiSets and MultiMaps
+ - a type of collection
+
+Most popular use for Multiset is Histograms
+35:53 shows the traditional way to do this Histogram
+
+/* tags.count() vs tags.getCount().  Does this make it Groovy hostile? */
+
+ConcurrentMultiMap
+
+2/2 @06:08
+
+/* Hmmm.  <Salesperson, List<Sale>> conveys more information to me */
+
+Kevin is not a fan of constructors.  The collections library gives us
+a way; static factory methods.
+
+Multimaps havve View collections Collections.max example at 15:13
+
+Ordering "an upgrade of a Comparator"
+
+Static Factory Methods out the wazoo
+ - Static methods have type inference
+ - The most popular thing in the whole library
+ /* RIGHT HERE ROBERT @ 28:00 */
+
+Iterator/Iterable when you don't want a collection but you want to
+iterate over something (Stream)
+
+/* Precondition Checking?!? */
+
+25,000 unit tests!! @ 37:50 shows a feature/builder/thing.
+
+
+2012-01-07
+  Tried to build Guava from git repository, no joy.
+
+  JARs are readily available but you've got to poke around a little for javadoc and source.
+    I found the JavaDoc and Source JARs on the release page:
+      http://code.google.com/p/guava-libraries/wiki/Release11
+
+  It looks like they really want you to use Maven.
+    /* How many folks use Maven to do their dependencies?  Do you use it for more than this?  Does it do the build too? */
+
+  The Guava wiki has what looks to be the elusive agenda I've been searching for:
+    http://code.google.com/p/guava-libraries/wiki/GuavaExplained
+    
+  Another list maintained by some third party guy:
+    http://www.tfnico.com/presentations/google-guava
+    
+2012-01-08:  GuavaExplained, Basics, UsingAndAvoidingNullExplained
+  Guava's utilities are designed to fail-fast in the presence of null
+
+  Guava Optional<T> is a way of replacing a nullable T reference with a non-null value.
+
+  /* Guava is a celebration of static factory methods...I really would like to understand the comment about static methods and type inference.  The deeper I get, the more it seems like a celebration of static methods in general. */
+
+  Guava Preconditions
+    checkNotNull( T ) has a cool feature of returning the value directly
+    checkArgument( boolean ) and checkState( boolean ) vary only in the exception they throw; IllegalArgumentException vs IllegalStateException
+
+
