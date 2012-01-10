@@ -73,6 +73,23 @@ MultiSets and MultiMaps
 
 /* tags.count() vs tags.getCount().  Does this make it Groovy hostile? */
 
+The video 2/2 shows 6 implementation of Multiset, Guava 11 has 7:
+  ImmutableMultiset
+  HashMultiset ( .hashCode() and .equals() )
+  LinkedHashMultiset
+  TreeMultiset ( Comparator )
+  EnumMultiset ( are your elements Enums? )
+  ConcurrentHashMultiset
+  ForwardingMultiset (not on video)
+
+Kevin B:  "I don't know what JSTL is..." /* make bob sad */
+
+MultiMap
+
+  Confusion reigns at 08:30 with "key has multiple values".  I find it easiest to think Multimap as <K,List<V>>.
+
+  Suspend at 10:33 of 2/2.
+
 ConcurrentMultiMap
 
 2/2 @06:08  
