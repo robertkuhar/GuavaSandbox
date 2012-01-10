@@ -10,7 +10,7 @@ but it really blossomed with Kevin's framework"
 2.  When in doubt, leave it out
 3.  Know and use the libraries
 
-Kevin B:
+Kevin Bourrillion and Jared Levy
 
 java.util is the bedrock for Google Collections
 
@@ -19,8 +19,8 @@ Immutable Collections
  Multimaps
 
 Unmodifiable vs Immutable
- Unmodifiable - YOU can't change it through this reference, but it
-can be changed.
+ Unmodifiable wrapper types in Java
+   - YOU can't change it through this reference, but it can be changed (behind your back).
  Immutable - no one can change this
 
 Immutable Collections
@@ -28,16 +28,16 @@ Immutable Collections
  ImmutableSet
  ImmutableSortedSet
  ImmutableMap
- (ImmutableSortedSet) - doesn't exist at time of presentation
+ ImmutableSortedMap - didn't exist for the presentation, exists now.
 
-He asserts his collections use far less memory
+He asserts his collections use far less memory (2 to 3x for an ImmutableSet)
 
 13:15  ImmutableSet<Integer> i = ImmutableSet.of( 4, 8, 15, 16, 23, 42 );
 
 I liked the explanation about "why is it ImmutableSet<Integer> rather
 than just Set<Integer>"...its because ImmutableSet conveys behavior
 
-.of() and .with()...cool
+.of() and .with() are cool, but at Guava 11 .with() does not exist.  ImmutableMap.Builder replaces it?
 
 None of them have public constructors, they don't want you to subclass
 them, so the classes themselves aren't final, but no public
@@ -55,14 +55,27 @@ Caveats
 MultiSets and MultiMaps
  - a type of collection
 
-Most popular use for Multiset is Histograms
+  Can it have duplicates?
+  Is ordering significant ( for .equals() )?
+  Iteration order?
+    insertion-ordered?
+    comparator-ordered?
+    user-ordered?
+    something else?
+    i don't care!
+
+  MultiSet - fills the "Duplicates Y, Ordered N" slot
+  (UniqueList) - fills the Duplicates N, Ordered Y" slot, but doesn't exist (even in 11)
+
+  Most popular use for Multiset is Integer valued Histogram structures
+
 35:53 shows the traditional way to do this Histogram
 
 /* tags.count() vs tags.getCount().  Does this make it Groovy hostile? */
 
 ConcurrentMultiMap
 
-2/2 @06:08
+2/2 @06:08  
 
 /* Hmmm.  <Salesperson, List<Sale>> conveys more information to me */
 
@@ -114,3 +127,4 @@ iterate over something (Stream)
     checkArgument( boolean ) and checkState( boolean ) vary only in the exception they throw; IllegalArgumentException vs IllegalStateException
 
 
+2012-01-09:  Immutable Collections
