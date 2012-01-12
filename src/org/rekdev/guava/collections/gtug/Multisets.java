@@ -21,7 +21,7 @@ public class Multisets {
         for ( BlogPost post : getAllBlogPosts() ) {
             for ( String tag : post.getTags() ) {
                 int value = tags.containsKey( tag ) ? tags.get( tag ) : 0;
-                tags.put( tag, value );
+                tags.put( tag, ++value );
             }
         }
         return tags;
