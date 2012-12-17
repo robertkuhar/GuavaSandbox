@@ -43,5 +43,21 @@ public class Multisets {
     public Collection<BlogPost> getAllBlogPosts() {
         return null;
     }
+    
+    public static final void main(String[] args) {
+        Multiset<String> hashMultiSet = HashMultiset.create();
+        Multiset<String> treeMultiSet = TreeMultiset.create();
+        
+        for ( String arg : args ) {
+            hashMultiSet.add( arg );
+            treeMultiSet.add( arg );
+        }
+        
+        System.out.println( "hashMultiSet.toString(): " + hashMultiSet.toString() );
+        System.out.println( "hashMultiSet.elementSet(): " + hashMultiSet.elementSet() );
 
+        System.out.println( "treeMultiSet.toString(): " + treeMultiSet.toString() );
+        System.out.println( "treeMultiSet.elementSet(): " + treeMultiSet.elementSet() );
+    }
+ 
 }
