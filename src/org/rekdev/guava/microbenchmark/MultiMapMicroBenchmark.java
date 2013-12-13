@@ -39,8 +39,9 @@ public class MultiMapMicroBenchmark {
     }
 
     public static void main( String[] args ) {
+        // It takes -Xmx3g just to get this to run on bobk-mbp.local @ Java7 in Eclipse
         String[] keys = { "Zeros", "Ones", "Twos", "Threes", "Fours", "Fives", "Sixes", "Sevens", "Eights", "Nines" };
-        int[] iterations = { 50000000, 51250000, 52500000, 55000000 };
+        int[] iterations = { 50000000, 51250000, 52500000, 55000000, 100000000, 125000000 };
         DoIt[] contestents = { new DoItMultimap(), new DoIt_____Map() };
         for ( int i = 0; i < iterations.length; i++ ) {
             int nFails = 0;
