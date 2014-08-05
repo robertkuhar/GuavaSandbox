@@ -9,6 +9,12 @@
 /work
 /bin
 
+# Gradle
+.gradle/
+/build
+/test-output
+
 # Emacs backup files
 *~
 \#*\#/bin
+
